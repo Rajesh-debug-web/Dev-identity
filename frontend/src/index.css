@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #0d1117;
+  --text-color: #e6edf3;
+  --accent-color: #58a6ff;
+  --secondary-color: #1f6feb;
+  --card-bg: #161b22;
+  --border-color: #30363d;
+  --input-bg: #0d1117;
+  --font-main: "Inter", system-ui, -apple-system, sans-serif;
+  --nav-height: 64px;
+  --nav-bg: rgba(13, 17, 23, 0.8);
+  --text-muted: #8b949e;
+  --shadow-color: rgba(2, 12, 27, 0.7);
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --accent-color: #0969da;
+  --secondary-color: #0550ae;
+  --card-bg: #f6f8fa;
+  --border-color: #d0d7de;
+  --input-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --text-muted: #57606a;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+#tsparticles {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0 !important;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: 80px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  background: linear-gradient(90deg, var(--accent-color), #a371f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 0.99;
+    text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.4), 1px -1px 0 rgba(255, 255, 255, 0.4), -1px 1px 0 rgba(255, 255, 255, 0.4), 1px 1px 0 rgba(255, 255, 255, 0.4), 0 -2px 8px, 0 0 2px, 0 0 5px #ff7e00, 0 0 15px #ff4444, 0 0 2px #ff7e00, 0 2px 3px #000;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+.flicker {
+  animation: flicker 2s linear infinite;
+  color: #fbff00; /* Bright yellow-orange base */
+}
+
+[data-theme="light"] .flicker {
+  color: #d97706; /* Darker orange for visibility on white */
+  text-shadow: 0 0 2px #d97706; /* Reduced glow */
+}
