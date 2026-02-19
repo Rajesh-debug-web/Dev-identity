@@ -2,6 +2,8 @@ import React from 'react';
 import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 import { EncryptedText } from '../ui/encrypted-text';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import resumePdf from '../ui/Rajesh_Kumar_Nayak_Resume.pdf';
 
 const Hero: React.FC = () => {
@@ -49,6 +51,21 @@ const Hero: React.FC = () => {
                 >
                     Download Resume
                 </motion.a>
+
+                <div className="flex gap-6 mt-8 justify-center md:justify-start">
+                    <a href="https://github.com/Rajesh-debug-web" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-colors duration-300">
+                        <FaGithub size={30} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/rajesh-kumar-nayak-64177b340/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-colors duration-300">
+                        <FaLinkedin size={30} />
+                    </a>
+                    <a href="https://www.instagram.com/rahul.__.45._/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-colors duration-300">
+                        <FaInstagram size={30} />
+                    </a>
+                    <a href="https://x.com/Rajesh_Nayak45" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-colors duration-300">
+                        <FaXTwitter size={30} />
+                    </a>
+                </div>
 
             </motion.div>
         </section>
