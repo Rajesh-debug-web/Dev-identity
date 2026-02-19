@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
                     I'm a Full Stack Developer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products.
                 </p>
 
-                <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                <div className="flex flex-col gap-8 items-center md:items-start mt-4">
                     <motion.a
                         href={resumePdf}
                         download="Rajesh_Kumar_Nayak_Resume.pdf"
@@ -52,17 +52,17 @@ const Hero: React.FC = () => {
                         Download Resume
                     </motion.a>
 
-                    <div className="flex gap-6 items-center pt-2">
-                        <a href="https://github.com/Rajesh-debug-web" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-2xl">
+                    <div className="flex gap-6 items-center">
+                        <a href="https://github.com/Rajesh-debug-web" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaGithub />
                         </a>
-                        <a href="https://www.linkedin.com/in/rajesh-kumar-nayak-64177b340/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-2xl">
+                        <a href="https://www.linkedin.com/in/rajesh-kumar-nayak-64177b340/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaLinkedin />
                         </a>
-                        <a href="https://www.instagram.com/rahul.__.45._/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-2xl">
+                        <a href="https://www.instagram.com/rahul.__.45._/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaInstagram />
                         </a>
-                        <a href="https://x.com/Rajesh_Nayak45" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-2xl">
+                        <a href="https://x.com/Rajesh_Nayak45" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaXTwitter />
                         </a>
                     </div>
