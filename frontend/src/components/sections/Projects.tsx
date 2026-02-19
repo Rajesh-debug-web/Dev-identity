@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
     return (
         <section id="projects" className="section container">
             <h2 className="section-title">Some Things I've Built</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, index) => (
                     <motion.div
                         key={index}
@@ -39,20 +39,15 @@ const Projects: React.FC = () => {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.5 }}
                         whileHover={{ y: -10 }}
-                        style={{
-                            backgroundColor: 'var(--card-bg)',
-                            padding: '30px',
-                            borderRadius: '8px',
-                            boxShadow: '0 10px 30px -15px var(--shadow-color)'
-                        }}
+                        className="bg-[var(--card-bg)] p-8 rounded-lg shadow-lg relative z-10"
                     >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', color: 'var(--accent-color)' }}>
+                        <div className="flex justify-between mb-5 text-[var(--accent-color)]">
                             <FaGithub size={30} />
                             <FaExternalLinkAlt size={25} />
                         </div>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: 'var(--text-color)' }}>{project.title}</h3>
-                        <p style={{ color: 'var(--text-muted)', marginBottom: '20px', fontSize: '1rem' }}>{project.description}</p>
-                        <ul style={{ display: 'flex', gap: '15px', listStyle: 'none', color: 'var(--text-muted)', fontFamily: 'monospace', fontSize: '0.8rem' }}>
+                        <h3 className="text-2xl mb-3 text-[var(--text-color)]">{project.title}</h3>
+                        <p className="text-[var(--text-muted)] mb-5 text-base">{project.description}</p>
+                        <ul className="flex gap-4 list-none text-[var(--text-muted)] font-mono text-xs">
                             {project.tech.map((t, i) => <li key={i}>{t}</li>)}
                         </ul>
                     </motion.div>

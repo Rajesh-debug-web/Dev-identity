@@ -27,18 +27,18 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="section container" style={{ textAlign: 'center', maxWidth: '600px' }}>
+        <section id="contact" className="section container max-w-2xl mx-auto text-center">
             <h2 className="section-title">Get In Touch</h2>
-            <p style={{ color: 'var(--text-muted)', marginBottom: '40px', fontSize: '1.2rem' }}>
+            <p className="text-[var(--text-muted)] mb-10 text-lg md:text-xl">
                 I'm currently looking for new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
 
-            <motion.form 
+            <motion.form
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left' }}
+                className="flex flex-col gap-5 text-left"
             >
                 <input
                     type="text"
@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    style={{ padding: '15px', borderRadius: '4px', border: '1px solid var(--border-color)', backgroundColor: 'var(--card-bg)', color: 'var(--text-color)', fontSize: '1rem' }}
+                    className="p-4 rounded border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--text-color)] text-base focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                 />
                 <input
                     type="email"
@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    style={{ padding: '15px', borderRadius: '4px', border: '1px solid var(--border-color)', backgroundColor: 'var(--card-bg)', color: 'var(--text-color)', fontSize: '1rem' }}
+                    className="p-4 rounded border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--text-color)] text-base focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                 />
                 <textarea
                     name="message"
@@ -65,26 +65,17 @@ const Contact: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    style={{ padding: '15px', borderRadius: '4px', border: '1px solid var(--border-color)', backgroundColor: 'var(--card-bg)', color: 'var(--text-color)', fontSize: '1rem', resize: 'vertical' }}
+                    className="p-4 rounded border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--text-color)] text-base resize-y focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                 />
-                <motion.button 
+                <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    style={{
-                        padding: '15px',
-                        backgroundColor: 'transparent',
-                        border: '1px solid var(--accent-color)',
-                        color: 'var(--accent-color)',
-                        borderRadius: '4px',
-                        fontSize: '1.1rem',
-                        fontWeight: 'bold',
-                        textAlign: 'center'
-                    }}
+                    className="p-4 bg-transparent border border-[var(--accent-color)] text-[var(--accent-color)] rounded text-lg font-bold text-center hover:bg-[var(--accent-color)] hover:text-white transition-colors duration-300 transform"
                 >
                     Say Hello
                 </motion.button>
-                {status && <p style={{ marginTop: '10px', textAlign: 'center', color: status.includes('success') ? 'green' : 'red' }}>{status}</p>}
+                {status && <p className={`mt-2 text-center ${status.includes('success') ? 'text-green-500' : 'text-red-500'}`}>{status}</p>}
             </motion.form>
         </section>
     );

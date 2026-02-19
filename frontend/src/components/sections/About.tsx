@@ -81,10 +81,9 @@ const About: React.FC = () => {
         <section id="about" className="section container">
             <h2 className="section-title">About Me</h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 3fr) minmax(250px, 2fr)', gap: '50px', alignItems: 'center' }}>
-
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Text Content Section */}
-                <div style={{ position: 'relative', minHeight: '400px' }}>
+                <div className="relative min-h-[400px]">
                     <AnimatePresence mode='wait'>
                         <motion.div
                             key={currentProfile.id}
@@ -102,21 +101,18 @@ const About: React.FC = () => {
                             </h3>
 
                             {currentProfile.description.map((para, index) => (
-                                <p key={index} style={{ marginBottom: '20px', fontSize: '1.1rem', color: 'var(--text-muted)' }}>
+                                <p key={index} className="mb-5 text-lg text-[var(--text-muted)]">
                                     {para}
                                 </p>
                             ))}
 
-                            <p style={{ marginBottom: '20px', fontSize: '1.1rem', color: 'var(--text-muted)' }}>
+                            <p className="mb-5 text-lg text-[var(--text-muted)]">
                                 Here are a few technologies I've been working with recently:
                             </p>
 
-                            <ul style={{
-                                display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', listStyle: 'none',
-                                fontFamily: 'monospace', fontSize: '0.9rem'
-                            }}>
+                            <ul className="grid grid-cols-2 gap-2 list-none font-mono text-sm">
                                 {currentProfile.tech.map((item) => (
-                                    <li key={item} style={{ display: 'flex', alignItems: 'center' }}>
+                                    <li key={item} className="flex items-center">
                                         <span style={{ color: currentProfile.accent, marginRight: '10px' }}>▹</span>
                                         {item}
                                     </li>
@@ -131,7 +127,7 @@ const About: React.FC = () => {
                     // Hover interaction: trigger change manually or show effect
                     onHoverStart={() => nextProfile()}
                     whileHover={{ scale: 1.05, rotate: 2 }}
-                    style={{ position: 'relative', cursor: 'pointer' }}
+                    className="relative cursor-pointer w-full max-w-[300px] h-[300px] mx-auto lg:mx-0"
                 >
                     <AnimatePresence mode='wait'>
                         <motion.div
@@ -141,8 +137,8 @@ const About: React.FC = () => {
                             exit={{ opacity: 0, rotateY: -90 }}
                             transition={{ duration: 0.6 }}
                             style={{
-                                width: '300px',
-                                height: '300px',
+                                width: '100%',
+                                height: '100%',
                                 borderRadius: '10px',
                                 position: 'relative',
                                 zIndex: 1,
@@ -154,12 +150,7 @@ const About: React.FC = () => {
                             <img
                                 src={currentProfile.image}
                                 alt={currentProfile.title}
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover',
-                                    display: 'block'
-                                }}
+                                className="w-full h-full object-cover block"
                             />
 
                             {/* Overlay Frame Effect */}
@@ -174,19 +165,7 @@ const About: React.FC = () => {
                     </AnimatePresence>
 
                     {/* Offset Frame */}
-                    <div style={{
-                        position: 'absolute',
-                        top: '20px',
-                        left: '20px',
-                        width: '300px',
-                        height: '300px',
-                        border: '2px solid var(--accent-color)',
-                        borderRadius: '10px',
-                        zIndex: 0,
-                        transition: 'transform 0.3s ease',
-                    }} />
-
-
+                    <div className="absolute top-5 left-5 w-full h-full border-2 border-[var(--accent-color)] rounded-[10px] z-0 transition-transform duration-300" />
                 </motion.div>
             </div>
         </section>

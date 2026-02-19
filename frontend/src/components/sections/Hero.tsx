@@ -6,25 +6,25 @@ import resumePdf from '../ui/Rajesh_Kumar_Nayak_Resume.pdf';
 
 const Hero: React.FC = () => {
     return (
-        <section id="home" className="section" style={{ alignItems: 'flex-start', paddingLeft: '10%', paddingTop: '80px' }}>
+        <section id="home" className="section relative flex flex-col items-center justify-center pt-20 md:pt-32 md:items-start md:pl-[10%] text-center md:text-left">
             <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative z-10"
+                className="relative z-10 w-full max-w-4xl px-4 md:px-0"
             >
-                <h2 style={{ fontSize: '1.5rem', color: 'var(--accent-color)', marginBottom: '10px' }}>
+                <h2 className="text-xl md:text-2xl text-[var(--accent-color)] mb-2 md:mb-4 font-medium">
                     Hi, my name is
                 </h2>
 
-                <h1 style={{ fontSize: '6rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '20px' }}>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-4 md:mb-6">
                     <EncryptedText
                         text="RAJESH"
                         revealDelayMs={400}
                         flipDelayMs={50}
                         className="font-mono text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]"
                     /> <br />
-                    <div style={{ color: 'var(--text-muted)', fontSize: '4rem', display: 'inline-block' }}>
+                    <div className="text-3xl md:text-6xl lg:text-7xl text-[var(--text-muted)] inline-block mt-2">
                         <Typewriter
                             options={{
                                 strings: ['I build things for the web.', 'I create digital experiences.', 'I code modern web apps.'],
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
                         />
                     </div>
                 </h1>
-                <p style={{ maxWidth: '600px', fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '40px' }}>
+                <p className="max-w-xl mx-auto md:mx-0 text-lg md:text-xl text-[var(--text-muted)] mb-8 md:mb-10 leading-relaxed">
                     I'm a Full Stack Developer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products.
                 </p>
 
@@ -45,15 +45,7 @@ const Hero: React.FC = () => {
                     download="Rajesh_Kumar_Nayak_Resume.pdf"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{
-                        display: 'inline-block',
-                        padding: '15px 30px',
-                        border: '1px solid var(--accent-color)',
-                        borderRadius: '4px',
-                        color: 'var(--accent-color)',
-                        fontSize: '1.1rem',
-                        fontWeight: 600
-                    }}
+                    className="inline-block px-6 py-3 md:px-8 md:py-4 border border-[var(--accent-color)] rounded text-[var(--accent-color)] text-lg font-semibold hover:bg-[var(--accent-color)] hover:text-white transition-colors duration-300"
                 >
                     Download Resume
                 </motion.a>
