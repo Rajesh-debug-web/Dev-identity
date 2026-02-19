@@ -1,3 +1,8 @@
+import React from 'react';
+import Typewriter from 'typewriter-effect';
+import { motion } from 'framer-motion';
+import { EncryptedText } from '../ui/encrypted-text';
+import resumePdf from '../ui/Rajesh_Kumar_Nayak_Resume.pdf';
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 
 const Hero: React.FC = () => {
