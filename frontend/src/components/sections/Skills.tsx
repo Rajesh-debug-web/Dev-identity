@@ -24,7 +24,11 @@ const Skills: React.FC = () => {
 
     return (
         <section id="skills" className="section container">
-            <h2 className="section-title">Technical Skills</h2>
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
+                    Technical <span className="text-indigo-500">Skills</span>
+                </h2>
+            </div>
             <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '2rem', overflow: 'hidden', padding: '2rem 0' }}>
                 <Marquee pauseOnHover repeat={4} className="[--duration:30s]">
                     {firstRow.map((skill, index) => (

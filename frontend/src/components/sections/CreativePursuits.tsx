@@ -20,7 +20,11 @@ const CreativePursuits: React.FC = () => {
 
     return (
         <section id="creative" className="section container">
-            <h2 className="section-title">Creative Pursuits</h2>
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
+                    Creative <span className="text-indigo-500">Pursuits</span>
+                </h2>
+            </div>
             <p style={{ textAlign: 'center', color: '#8b949e', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>
                 Beyond lines of code, I love to express creativity in various forms. Here is how I unwind and stay inspired.
             </p>
@@ -44,9 +48,9 @@ const CreativePursuits: React.FC = () => {
                             borderTop: `4px solid ${pur.color}`
                         }}
                     >
-                        <div style={{ 
-                            width: '60px', height: '60px', margin: '0 auto 20px auto', 
-                            backgroundColor: `${pur.color}20`, borderRadius: '50%', 
+                        <div style={{
+                            width: '60px', height: '60px', margin: '0 auto 20px auto',
+                            backgroundColor: `${pur.color}20`, borderRadius: '50%',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             color: pur.color, fontSize: '1.5rem'
                         }}>

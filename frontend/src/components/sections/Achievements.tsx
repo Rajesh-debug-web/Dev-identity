@@ -61,9 +61,11 @@ const Achievements: React.FC = () => {
 
     return (
         <section id="achievements" className="section container">
-            <h2 className="section-title">
-                Achievements
-            </h2>
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
+                    My <span className="text-indigo-500">Achievements</span>
+                </h2>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {list.map((item, index) => (

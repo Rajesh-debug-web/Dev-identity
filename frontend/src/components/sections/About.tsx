@@ -79,7 +79,11 @@ const About: React.FC = () => {
 
     return (
         <section id="about" className="section container">
-            <h2 className="section-title">About Me</h2>
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
+                    About <span className="text-indigo-500">Me</span>
+                </h2>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Text Content Section */}

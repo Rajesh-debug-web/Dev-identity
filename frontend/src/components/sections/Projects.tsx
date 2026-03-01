@@ -29,7 +29,11 @@ const Projects: React.FC = () => {
 
     return (
         <section id="projects" className="section container">
-            <h2 className="section-title">Some Things I've Built</h2>
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
+                    Some Things I've <span className="text-indigo-500">Built</span>
+                </h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, index) => (
                     <motion.div
