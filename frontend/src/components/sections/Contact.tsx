@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import Globe3DDemo from '../3d-globe-demo';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="section container mx-auto px-4 py-20 max-w-5xl">
+        <section id="contact" className="section container mx-auto px-4 py-20 max-w-7xl">
             <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
                     Get in <span className="text-indigo-500">Touch</span>
@@ -38,7 +39,7 @@ const Contact: React.FC = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1.5fr] gap-8 lg:gap-12 max-w-full mx-auto items-center">
                 {/* Left Side: Contact Information */}
                 <div className="flex flex-col gap-10">
                     <h3 className="text-2xl font-semibold text-[var(--text-color)]">Contact Information</h3>
@@ -68,7 +69,7 @@ const Contact: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Right Side: Form */}
+                {/* Middle Side: Form */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -126,6 +127,16 @@ const Contact: React.FC = () => {
                         </motion.button>
                         {status && <p className={`text-center text-sm ${status.includes('success') ? 'text-green-500' : 'text-red-500'}`}>{status}</p>}
                     </form>
+                </motion.div>
+
+                {/* Right Side: 3D Globe */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="w-full flex items-center justify-center h-full min-h-[400px] lg:min-h-[500px]"
+                >
+                    <Globe3DDemo />
                 </motion.div>
             </div>
         </section>
