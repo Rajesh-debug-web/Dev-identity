@@ -22,11 +22,11 @@ const Achievements: React.FC = () => {
             date: "Jun 15, 2025"
         },
         {
-            title: "Advanced Data Structures & Algorithms",
+            title: "Python Programming",
             category: "Certification",
             image: certPython,
             icon: <FaCertificate size={40} className="text-yellow-400" />,
-            desc: "Mastered complex data structures and algorithm optimization techniques. Awarded for exceptional problem-solving skills in competitive programming.",
+            desc: "Mastered core Python concepts including object-oriented programming, data structures, and algorithmic solutions. Developed various applications ranging from simple scripts to comprehensive back-end systems.",
             link: certPython,
             date: "May 20, 2025"
         },
