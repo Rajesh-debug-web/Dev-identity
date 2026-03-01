@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1.5fr] gap-8 lg:gap-12 max-w-full mx-auto items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.7fr_1.3fr] gap-8 lg:gap-12 max-w-full mx-auto items-center">
                 {/* Left Side: Contact Information */}
                 <div className="flex flex-col gap-10">
                     <h3 className="text-2xl font-semibold text-[var(--text-color)]">Contact Information</h3>
@@ -50,8 +50,8 @@ const Contact: React.FC = () => {
                         </div>
                         <div>
                             <h4 className="text-[var(--text-color)] font-medium text-lg">Email Me</h4>
-                            <a href="mailto:rajesh.nayak@gmail.com" className="text-[var(--text-muted)] hover:text-blue-500 transition-colors">
-                                rajesh.nayak@gmail.com
+                            <a href="mailto:rajeshkumarnayakrahul@gmail.com" className="text-[var(--text-muted)] hover:text-blue-500 transition-colors break-all">
+                                rajeshkumarnayakrahul@gmail.com
                             </a>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
                         <div>
                             <h4 className="text-[var(--text-color)] font-medium text-lg">Location</h4>
                             <p className="text-[var(--text-muted)]">
-                                India
+                                Odisha, India
                             </p>
                         </div>
                     </div>
