@@ -8,10 +8,19 @@ import certPython from '../ui/certificates/course_certificate.pdf';
 import certKaggle from '../ui/certificates/GoogleKaggle.jpg';
 import certNetworking from '../ui/certificates/Professional Networking for Career Growth (1).pdf';
 import certFullStack from '../ui/certificates/Rajesh_Kumar_Nayak_Certificate.pdf';
-import certAWS from '../ui/certificates/Mastering Cloud Computing and AWS_ From Fundamentals to Advanced Practices.pdf';
+import certAWS from '../ui/certificates/AWS_Certificate.pdf';
 
 const Achievements: React.FC = () => {
     const list = [
+        {
+            title: "Mastering Cloud Computing and AWS: From Fundamentals to Advanced Practices",
+            category: "Certification",
+            image: certAWS,
+            icon: <FaCloud size={40} className="text-orange-500" />,
+            desc: "Advanced mastery of cloud architecture, AWS services, and scalable infrastructure design.",
+            link: certAWS,
+            date: "Jun 15, 2025"
+        },
         {
             title: "Advanced Data Structures & Algorithms",
             category: "Certification",
@@ -47,15 +56,6 @@ const Achievements: React.FC = () => {
             desc: "Comprehensive certification covering React, Node.js, and Modern Web Architecture. Successfully deployed multiple scalable full-stack applications.",
             link: certFullStack,
             date: "Feb 28, 2025"
-        },
-        {
-            title: "Mastering Cloud Computing and AWS: From Fundamentals to Advanced Practices",
-            category: "Certification",
-            image: certAWS,
-            icon: <FaCloud size={40} className="text-orange-500" />,
-            desc: "Advanced mastery of cloud architecture, AWS services, and scalable infrastructure design.",
-            link: certAWS,
-            date: "Jun 15, 2025"
         }
     ];
 
