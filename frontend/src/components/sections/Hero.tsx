@@ -42,15 +42,28 @@ const Hero: React.FC = () => {
                 </p>
 
                 <div className="flex flex-col gap-8 items-center md:items-start mt-4">
-                    <motion.a
-                        href={resumePdf}
-                        download="Rajesh_Kumar_Nayak_Resume.pdf"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-block px-6 py-3 md:px-8 md:py-4 border border-[var(--accent-color)] rounded text-[var(--accent-color)] text-lg font-semibold hover:bg-[var(--accent-color)] hover:text-white transition-colors duration-300"
-                    >
-                        Download Resume
-                    </motion.a>
+                    <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start">
+                        <motion.a
+                            href={resumePdf}
+                            download="Rajesh_Kumar_Nayak_Resume.pdf"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-block px-6 py-3 md:px-8 md:py-4 border border-[var(--accent-color)] rounded text-[var(--accent-color)] text-lg font-semibold hover:bg-[var(--accent-color)] hover:text-white transition-colors duration-300"
+                        >
+                            Download Resume
+                        </motion.a>
+
+                        <motion.a
+                            href={resumePdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-block px-6 py-3 md:px-8 md:py-4 border border-[var(--accent-color)] rounded bg-[var(--accent-color)] text-white text-lg font-semibold hover:bg-transparent hover:text-[var(--accent-color)] transition-colors duration-300"
+                        >
+                            View Resume
+                        </motion.a>
+                    </div>
 
                     <div className="flex gap-6 items-center">
                         <a href="https://github.com/Rajesh-debug-web" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">

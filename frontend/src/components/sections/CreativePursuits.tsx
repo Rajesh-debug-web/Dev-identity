@@ -1,9 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaCamera, FaPaintBrush } from 'react-icons/fa';
-
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaCamera, FaPaintBrush, FaTimes } from 'react-icons/fa';
+import img1 from '../ui/img-1.jpeg';
+import img2 from '../ui/img-2.jpeg';
+import img3 from '../ui/img-3.jpeg';
+import img4 from '../ui/img-4.jpeg';
 
 const CreativePursuits: React.FC = () => {
+    const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
     const pursuits = [
         {
             type: "Photography",
@@ -52,6 +57,73 @@ const CreativePursuits: React.FC = () => {
                 ))}
             </div>
 
+            <div className="mt-20 pb-8 text-center max-w-6xl mx-auto">
+                <h3 className="text-3xl font-semibold mb-10 text-[var(--text-color)]">
+                    <span className="text-indigo-500">Photography</span> Collection
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
+                    {[img1, img2, img3, img4].map((imgSrc, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.15, duration: 0.5 }}
+                            onClick={() => setSelectedImg(imgSrc)}
+                            className="relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] aspect-[3/4] cursor-pointer ring-1 ring-white/10 group"
+                        >
+                            <img
+                                src={imgSrc}
+                                alt={`Photography ${idx + 1}`}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            {/* Hover Overlay */}
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                                <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                    <span className="text-white font-medium bg-black/60 px-5 py-2.5 rounded-full flex items-center gap-2 backdrop-blur-sm">
+                                        <FaCamera /> View Photo
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedImg && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImg(null)}
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md cursor-zoom-out"
+                    >
+                        <button
+                            onClick={() => setSelectedImg(null)}
+                            aria-label="Close full-screen view"
+                            className="absolute top-6 right-6 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors z-[110] p-2 hover:bg-white/10 rounded-full"
+                        >
+                            <FaTimes size={30} />
+                        </button>
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                            className="relative max-h-[90vh] max-w-[95vw] md:max-w-[85vw] flex items-center justify-center cursor-default shadow-2xl rounded-lg overflow-hidden ring-1 ring-white/20"
+                            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+                        >
+                            <img
+                                src={selectedImg}
+                                alt="Expanded photography view"
+                                className="max-h-[90vh] max-w-full object-contain"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
