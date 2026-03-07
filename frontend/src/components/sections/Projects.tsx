@@ -46,10 +46,31 @@ const Projects: React.FC = () => {
                         className="bg-[var(--card-bg)] p-8 rounded-lg shadow-lg relative z-10"
                     >
                         <div className="flex justify-between mb-5 text-[var(--accent-color)]">
-                            <FaGithub size={30} />
-                            <FaExternalLinkAlt size={25} />
+                            {project.github && project.github !== '#' ? (
+                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-color)] transition-colors" aria-label={`${project.title} GitHub`}>
+                                    <FaGithub size={30} />
+                                </a>
+                            ) : (
+                                <FaGithub size={30} className="opacity-50 cursor-not-allowed" />
+                            )}
+                            
+                            {project.link && project.link !== '#' ? (
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-color)] transition-colors" aria-label={`${project.title} Live Link`}>
+                                    <FaExternalLinkAlt size={25} />
+                                </a>
+                            ) : (
+                                <FaExternalLinkAlt size={25} className="opacity-50 cursor-not-allowed" />
+                            )}
                         </div>
-                        <h3 className="text-2xl mb-3 text-[var(--text-color)]">{project.title}</h3>
+                        <h3 className="text-2xl mb-3 text-[var(--text-color)] font-semibold">
+                            {project.link !== '#' ? (
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-color)] transition-colors">
+                                    {project.title}
+                                </a>
+                            ) : (
+                                project.title
+                            )}
+                        </h3>
                         <p className="text-[var(--text-muted)] mb-5 text-base">{project.description}</p>
                         <ul className="flex gap-4 list-none text-[var(--text-muted)] font-mono text-xs">
                             {project.tech.map((t, i) => <li key={i}>{t}</li>)}
