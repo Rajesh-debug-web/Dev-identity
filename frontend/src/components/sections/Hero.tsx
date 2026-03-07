@@ -53,16 +53,16 @@ const Hero: React.FC = () => {
                     </motion.a>
 
                     <div className="flex gap-6 items-center">
-                        <a href="https://github.com/Rajesh-debug-web" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
+                        <a href="https://github.com/Rajesh-debug-web" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaGithub />
                         </a>
-                        <a href="https://www.linkedin.com/in/rajesh-kumar-nayak-64177b340/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
+                        <a href="https://www.linkedin.com/in/rajesh-kumar-nayak-64177b340/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaLinkedin />
                         </a>
-                        <a href="https://www.instagram.com/rahul.__.45._/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
+                        <a href="https://www.instagram.com/rahul.__.45._/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaInstagram />
                         </a>
-                        <a href="https://x.com/Rajesh_Nayak45" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
+                        <a href="https://x.com/Rajesh_Nayak45" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" className="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-transform hover:scale-110 text-3xl">
                             <FaXTwitter />
                         </a>
                     </div>

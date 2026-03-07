@@ -18,13 +18,14 @@ const Contact: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
         try {
-            await axios.post('/api/contact', { ...formData, timestamp: new Date().toISOString() });
+            await axios.post('http://localhost:5000/api/contact', { ...formData, timestamp: new Date().toISOString() });
             setStatus('Message sent successfully!');
             setFormData({ name: '', email: '', message: '' });
         } catch (error) {
-            console.error(error);
-            setStatus('Failed to send message. Please try again.');
+            console.error('API Error:', error);
+            setStatus('Failed to send message. Please try again or check backend connection.');
         }
     };
 

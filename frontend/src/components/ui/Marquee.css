@@ -5,17 +5,18 @@
     gap: var(--gap);
     --duration: 40s;
     --gap: 1rem;
+    -webkit-user-select: none;
     user-select: none;
     width: 100%;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .marquee-container.vertical {
     flex-direction: column;
     height: 100%; /* Needed for vertical marquee usually */
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
 
 .marquee-content {

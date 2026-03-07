@@ -29,28 +29,15 @@ const Skills: React.FC = () => {
                     Technical <span className="text-indigo-500">Skills</span>
                 </h2>
             </div>
-            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '2rem', overflow: 'hidden', padding: '2rem 0' }}>
+            <div className="relative flex flex-col gap-8 overflow-hidden py-8">
                 <Marquee pauseOnHover repeat={4} className="[--duration:30s]">
                     {firstRow.map((skill, index) => (
                         <div
                             key={index}
-                            style={{
-                                backgroundColor: 'var(--card-bg)',
-                                padding: '1.5rem',
-                                borderRadius: '10px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                gap: '10px',
-                                minWidth: '150px',
-                                cursor: 'pointer',
-                                border: '1px solid var(--border-color)',
-                                transition: 'all 0.3s ease'
-                            }}
-                            className="skill-card"
+                            className="skill-card bg-[var(--card-bg)] p-6 rounded-[10px] flex flex-col items-center gap-2.5 min-w-[150px] cursor-pointer border border-[var(--border-color)] transition-all duration-300 ease-in-out"
                         >
-                            <div style={{ fontSize: '3rem' }}>{skill.icon}</div>
-                            <span style={{ fontSize: '1rem', fontWeight: 500, color: 'var(--text-color)' }}>{skill.name}</span>
+                            <div className="text-5xl">{skill.icon}</div>
+                            <span className="text-base font-medium text-[var(--text-color)]">{skill.name}</span>
                         </div>
                     ))}
                 </Marquee>
@@ -58,23 +45,10 @@ const Skills: React.FC = () => {
                     {secondRow.map((skill, index) => (
                         <div
                             key={index}
-                            style={{
-                                backgroundColor: 'var(--card-bg)',
-                                padding: '1.5rem',
-                                borderRadius: '10px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                gap: '10px',
-                                minWidth: '150px',
-                                cursor: 'pointer',
-                                border: '1px solid var(--border-color)',
-                                transition: 'all 0.3s ease'
-                            }}
-                            className="skill-card"
+                            className="skill-card bg-[var(--card-bg)] p-6 rounded-[10px] flex flex-col items-center gap-2.5 min-w-[150px] cursor-pointer border border-[var(--border-color)] transition-all duration-300 ease-in-out"
                         >
-                            <div style={{ fontSize: '3rem' }}>{skill.icon}</div>
-                            <span style={{ fontSize: '1rem', fontWeight: 500, color: 'var(--text-color)' }}>{skill.name}</span>
+                            <div className="text-5xl">{skill.icon}</div>
+                            <span className="text-base font-medium text-[var(--text-color)]">{skill.name}</span>
                         </div>
                     ))}
                 </Marquee>

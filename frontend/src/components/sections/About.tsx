@@ -96,11 +96,7 @@ const About: React.FC = () => {
                             exit={{ opacity: 0, x: 20 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h3 style={{
-                                color: currentProfile.accent,
-                                marginBottom: '1rem',
-                                fontSize: '1.5rem'
-                            }}>
+                            <h3 className="mb-4 text-2xl" style={{ color: currentProfile.accent }}>
                                 {currentProfile.title}
                             </h3>
 
@@ -117,7 +113,7 @@ const About: React.FC = () => {
                             <ul className="grid grid-cols-2 gap-2 list-none font-mono text-sm">
                                 {currentProfile.tech.map((item) => (
                                     <li key={item} className="flex items-center">
-                                        <span style={{ color: currentProfile.accent, marginRight: '10px' }}>▹</span>
+                                        <span className="mr-2.5" style={{ color: currentProfile.accent }}>▹</span>
                                         {item}
                                     </li>
                                 ))}
@@ -157,14 +153,10 @@ const About: React.FC = () => {
                                 className="w-full h-full object-cover block"
                             />
 
-                            {/* Overlay Frame Effect */}
-                            <div style={{
-                                position: 'absolute',
-                                top: 0, left: 0, right: 0, bottom: 0,
-                                border: `2px solid ${currentProfile.accent}`,
-                                borderRadius: '10px',
-                                opacity: 0.5
-                            }} />
+                            <div 
+                                className="absolute inset-0 border-2 rounded-[10px] opacity-50" 
+                                style={{ borderColor: currentProfile.accent }} 
+                            />
                         </motion.div>
                     </AnimatePresence>
 

@@ -86,8 +86,7 @@ const Achievements: React.FC = () => {
                                         <iframe
                                             src={`${item.image}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
                                             title={item.title}
-                                            className="w-full h-full border-none"
-                                            style={{ pointerEvents: 'none' }}
+                                            className="w-full h-full border-none pointer-events-none"
                                         />
                                         <div className="absolute inset-0 bg-transparent" />
                                     </div>

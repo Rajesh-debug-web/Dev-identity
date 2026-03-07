@@ -46,12 +46,12 @@ def contact():
             "timestamp": data.get("timestamp")
         })
 
-        # Send Email Notification
+        # Send Email Notification to rajeshkumarnayakrahul@gmail.com
         if app.config['MAIL_USERNAME'] and app.config['MAIL_PASSWORD']:
             try:
                 msg = Message(
                     subject=f"New Portfolio Message from {data.get('name')}",
-                    recipients=[app.config['MAIL_USERNAME']], 
+                    recipients=["rajeshkumarnayakrahul@gmail.com"], 
                     body=f"Name: {data.get('name')}\nEmail: {data.get('email')}\n\nMessage:\n{data.get('message')}"
                 )
                 mail.send(msg)
