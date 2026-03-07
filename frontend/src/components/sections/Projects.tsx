@@ -5,11 +5,11 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 const Projects: React.FC = () => {
     const projects = [
         {
-            title: "Project Alpha",
-            description: "A web application for something cool. Built with React and Flask.",
-            tech: ["React", "Flask", "MongoDB"],
+            title: "Story Telling Web",
+            description: "A digital gateway to ancient wisdom, blending modern web technologies with spiritual storytelling. Features a dual-theme interface to explore The Ramayan and Radha Krishna.",
+            tech: ["React", "TypeScript", "Tailwind CSS"],
             github: "#",
-            link: "#"
+            link: "https://story-telling-web.vercel.app"
         },
         {
             title: "Project Beta",
