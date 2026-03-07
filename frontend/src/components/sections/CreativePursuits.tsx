@@ -1,10 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCamera, FaPaintBrush } from 'react-icons/fa';
-import img1 from '../ui/img-1.jpeg';
-import img2 from '../ui/img-2.jpeg';
-import img3 from '../ui/img-3.jpeg';
-import img4 from '../ui/img-4.jpeg';
+
 
 const CreativePursuits: React.FC = () => {
     const pursuits = [
@@ -55,30 +52,6 @@ const CreativePursuits: React.FC = () => {
                 ))}
             </div>
 
-            <div className="mt-16 pb-8 text-center max-w-6xl mx-auto">
-                <h3 className="text-3xl font-semibold mb-8 text-[var(--text-color)]">
-                    <span className="text-indigo-500">Photography</span> Collection
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
-                    {[img1, img2, img3, img4].map((imgSrc, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.15, duration: 0.5 }}
-                            whileHover={{ y: -10 }}
-                            className="relative overflow-hidden rounded-xl shadow-2xl aspect-[3/4] cursor-pointer ring-1 ring-white/10"
-                        >
-                            <img
-                                src={imgSrc}
-                                alt={`Photography ${idx + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                            />
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
         </section>
     );
 };
