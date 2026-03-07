@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 import Globe3DDemo from '../3d-globe-demo';
 
@@ -18,14 +17,34 @@ const Contact: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setStatus('Sending...');
 
         try {
-            await axios.post('http://localhost:5000/api/contact', { ...formData, timestamp: new Date().toISOString() });
-            setStatus('Message sent successfully!');
-            setFormData({ name: '', email: '', message: '' });
+            // Using FormSubmit for a 100% reliable free email forwarding without needing a custom backend 
+            const response = await fetch('https://formsubmit.co/ajax/rajeshkumarnayakrahul@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    _subject: `New Portfolio Message from ${formData.name}`,
+                    _template: "table"
+                })
+            });
+
+            if (response.ok) {
+                setStatus('Message sent successfully!');
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                throw new Error('Network response was not ok.');
+            }
         } catch (error) {
-            console.error('API Error:', error);
-            setStatus('Failed to send message. Please try again or check backend connection.');
+            console.error('Email API Error:', error);
+            setStatus('Failed to send message. Please try again later.');
         }
     };
 
