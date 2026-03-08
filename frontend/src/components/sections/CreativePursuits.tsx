@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCamera, FaPaintBrush, FaTimes } from 'react-icons/fa';
-import img1 from '../ui/img-1.jpeg';
-import img2 from '../ui/img-2.jpeg';
-import img3 from '../ui/img-3.jpeg';
-import img4 from '../ui/img-4.jpeg';
+import img1 from '../ui/photo-1.jpeg';
+import img2 from '../ui/photo-2.jpeg';
+import img3 from '../ui/photo-3.jpeg';
+import img4 from '../ui/photo-4.jpeg';
 
 const CreativePursuits: React.FC = () => {
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
