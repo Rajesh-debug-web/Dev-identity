@@ -8,13 +8,16 @@ import img4 from '../ui/photo-4.jpeg';
 
 const CreativePursuits: React.FC = () => {
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
+    const [showGallery, setShowGallery] = useState(false);
 
     const pursuits = [
         {
             type: "Photography",
             icon: <FaCamera />,
             text: "I explore the world through my lens, capturing moments of urban life and nature's stillness.",
-            color: "#ff7675"
+            color: "#ff7675",
+            onClick: () => setShowGallery(!showGallery),
+            isButton: true
         },
         {
             type: "Painting",
@@ -43,7 +46,9 @@ const CreativePursuits: React.FC = () => {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.2 }}
                         whileHover={{ rotate: 3, scale: 1.05 }}
-                        className="w-[300px] bg-[var(--card-bg)] rounded-[16px] p-[30px] text-center relative overflow-hidden"
+                        whileTap={pur.isButton ? { scale: 0.95 } : undefined}
+                        onClick={pur.onClick}
+                        className={`w-[300px] bg-[var(--card-bg)] rounded-[16px] p-[30px] text-center relative overflow-hidden ${pur.isButton ? 'cursor-pointer hover:shadow-lg hover:shadow-[#ff7675]/20 ring-1 ring-transparent hover:ring-[#ff7675]/50 transition-all' : ''}`}
                         style={{ borderTop: `4px solid ${pur.color}` }}
                     >
                         <div className="w-[60px] h-[60px] mx-auto mb-5 rounded-full flex items-center justify-center text-2xl"
@@ -52,43 +57,60 @@ const CreativePursuits: React.FC = () => {
                             {pur.icon}
                         </div>
                         <h3 className="mb-[15px] text-[var(--text-color)]">{pur.type}</h3>
-                        <p className="text-[#8b949e] leading-[1.6]">{pur.text}</p>
+                        <p className="text-[#8b949e] leading-[1.6]">
+                            {pur.text}
+                            {pur.isButton && (
+                                <span className="block mt-4 text-sm font-semibold opacity-80" style={{ color: pur.color }}>
+                                    {showGallery ? "Click to hide gallery ↑" : "Click to view gallery ↓"}
+                                </span>
+                            )}
+                        </p>
                     </motion.div>
                 ))}
             </div>
 
-            <div className="mt-20 pb-8 text-center max-w-6xl mx-auto">
-                <h3 className="text-3xl font-semibold mb-10 text-[var(--text-color)]">
-                    <span className="text-indigo-500">Photography</span> Collection
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
-                    {[img1, img2, img3, img4].map((imgSrc, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.15, duration: 0.5 }}
-                            onClick={() => setSelectedImg(imgSrc)}
-                            className="relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] aspect-[3/4] cursor-pointer ring-1 ring-white/10 group"
-                        >
-                            <img
-                                src={imgSrc}
-                                alt={`Photography ${idx + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                            {/* Hover Overlay */}
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                                <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                                    <span className="text-white font-medium bg-black/60 px-5 py-2.5 rounded-full flex items-center gap-2 backdrop-blur-sm">
-                                        <FaCamera /> View Photo
-                                    </span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+            <AnimatePresence>
+                {showGallery && (
+                    <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        className="mt-20 pb-8 text-center max-w-6xl mx-auto overflow-hidden"
+                    >
+                        <h3 className="text-3xl font-semibold mb-10 text-[var(--text-color)]">
+                            <span className="text-indigo-500">Photography</span> Collection
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
+                            {[img1, img2, img3, img4].map((imgSrc, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    onClick={() => setSelectedImg(imgSrc)}
+                                    className="relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] aspect-[3/4] cursor-pointer ring-1 ring-white/10 group"
+                                >
+                                    <img
+                                        src={imgSrc}
+                                        alt={`Photography ${idx + 1}`}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    {/* Hover Overlay */}
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                                        <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                            <span className="text-white font-medium bg-black/60 px-5 py-2.5 rounded-full flex items-center gap-2 backdrop-blur-sm">
+                                                <FaCamera /> View Photo
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Lightbox Modal */}
             <AnimatePresence>
