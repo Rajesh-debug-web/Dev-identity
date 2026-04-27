@@ -56,7 +56,7 @@ const CreativePursuits: React.FC = () => {
                         whileHover={{ rotate: 3, scale: 1.05 }}
                         whileTap={pur.isButton ? { scale: 0.95 } : undefined}
                         onClick={pur.onClick}
-                        className={`w-[300px] bg-[var(--card-bg)] rounded-[16px] p-[30px] text-center relative overflow-hidden ${pur.isButton ? 'cursor-pointer hover:shadow-lg hover:shadow-[#ff7675]/20 ring-1 ring-transparent hover:ring-[#ff7675]/50 transition-all' : ''}`}
+                        className={`w-[300px] bg-[var(--card-bg)] rounded-[16px] p-[30px] text-center relative overflow-hidden ${pur.isButton ? `cursor-pointer hover:shadow-lg ring-1 ring-transparent transition-all ${pur.type === 'Photography' ? 'hover:shadow-[#ff7675]/20 hover:ring-[#ff7675]/50' : 'hover:shadow-[#fd79a8]/20 hover:ring-[#fd79a8]/50'}` : ''}`}
                         style={{ borderTop: `4px solid ${pur.color}` }}
                     >
                         <div className="w-[60px] h-[60px] mx-auto mb-5 rounded-full flex items-center justify-center text-2xl"
@@ -69,7 +69,9 @@ const CreativePursuits: React.FC = () => {
                             {pur.text}
                             {pur.isButton && (
                                 <span className="block mt-4 text-sm font-semibold opacity-80" style={{ color: pur.color }}>
-                                    {activeGallery === pur.type ? "Click to hide gallery ↑" : "Click to view gallery ↓"}
+                                    {activeGallery === pur.type 
+                                        ? `Click to hide ${pur.type === 'Photography' ? 'gallery' : 'paintings'} ↑` 
+                                        : `Click to view ${pur.type === 'Photography' ? 'gallery' : 'paintings'} ↓`}
                                 </span>
                             )}
                         </p>
