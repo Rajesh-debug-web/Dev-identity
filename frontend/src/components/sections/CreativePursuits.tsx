@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCamera, FaPaintBrush, FaTimes } from 'react-icons/fa';
+import { FaCamera, FaPaintBrush, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import photo1 from '../ui/photo-1.jpeg';
 import photo2 from '../ui/photo-2.jpeg';
@@ -92,16 +92,16 @@ const CreativePursuits: React.FC = () => {
                         <h3 className="text-3xl font-semibold mb-10 text-[var(--text-color)]">
                             <span className="text-indigo-500">{activeGallery}</span> Collection
                         </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
+                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 pb-8" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                             {activeImages.map((imgSrc, idx) => (
                                 <motion.div
                                     key={`${activeGallery}-${idx}`}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    transition={{ delay: Math.min(idx * 0.1, 1), duration: 0.5 }}
                                     onClick={() => setSelectedImg(imgSrc)}
-                                    className="relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] aspect-[3/4] cursor-pointer ring-1 ring-white/10 group"
+                                    className="flex-shrink-0 w-[280px] md:w-[320px] snap-center relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] aspect-[3/4] cursor-pointer ring-1 ring-white/10 group"
                                 >
                                     <img
                                         src={imgSrc}
@@ -140,7 +140,37 @@ const CreativePursuits: React.FC = () => {
                         >
                             <FaTimes size={30} />
                         </button>
+
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (!selectedImg) return;
+                                const currentIndex = activeImages.indexOf(selectedImg);
+                                const prevIndex = (currentIndex - 1 + activeImages.length) % activeImages.length;
+                                setSelectedImg(activeImages[prevIndex]);
+                            }}
+                            className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors z-[110] p-4 hover:bg-white/10 rounded-full"
+                            aria-label="Previous image"
+                        >
+                            <FaChevronLeft size={30} />
+                        </button>
+
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (!selectedImg) return;
+                                const currentIndex = activeImages.indexOf(selectedImg);
+                                const nextIndex = (currentIndex + 1) % activeImages.length;
+                                setSelectedImg(activeImages[nextIndex]);
+                            }}
+                            className="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors z-[110] p-4 hover:bg-white/10 rounded-full"
+                            aria-label="Next image"
+                        >
+                            <FaChevronRight size={30} />
+                        </button>
+
                         <motion.div
+                            key={selectedImg}
                             initial={{ scale: 0.9, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
