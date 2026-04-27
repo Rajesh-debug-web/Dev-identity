@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCamera, FaPaintBrush, FaTimes } from 'react-icons/fa';
-import img1 from '../ui/photo-1.jpeg';
-import img2 from '../ui/photo-2.jpeg';
-import img3 from '../ui/photo-3.jpeg';
-import img4 from '../ui/photo-4.jpeg';
+
+import photo1 from '../ui/photo-1.jpeg';
+import photo2 from '../ui/photo-2.jpeg';
+import photo3 from '../ui/photo-3.jpeg';
+import photo4 from '../ui/photo-4.jpeg';
+
 
 const CreativePursuits: React.FC = () => {
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
-    const [showGallery, setShowGallery] = useState(false);
+    const [activeGallery, setActiveGallery] = useState<string | null>(null);
 
     const pursuits = [
         {
@@ -16,16 +18,22 @@ const CreativePursuits: React.FC = () => {
             icon: <FaCamera />,
             text: "I explore the world through my lens, capturing moments of urban life and nature's stillness.",
             color: "#ff7675",
-            onClick: () => setShowGallery(!showGallery),
-            isButton: true
+            onClick: () => setActiveGallery(activeGallery === "Photography" ? null : "Photography"),
+            isButton: true,
+            images: [photo1, photo2, photo3, photo4]
         },
         {
             type: "Painting",
             icon: <FaPaintBrush />,
             text: "I express my imagination on canvas, playing with colors and abstract forms to create visual stories.",
-            color: "#fd79a8"
+            color: "#fd79a8",
+            onClick: () => setActiveGallery(activeGallery === "Painting" ? null : "Painting"),
+            isButton: true,
+            images: Array.from({ length: 21 }, (_, i) => `/Paintings/${i + 1}.jpeg`)
         }
     ];
+
+    const activeImages = activeGallery === "Photography" ? pursuits[0].images : (activeGallery === "Painting" ? pursuits[1].images : []);
 
     return (
         <section id="creative" className="section container">
@@ -61,7 +69,7 @@ const CreativePursuits: React.FC = () => {
                             {pur.text}
                             {pur.isButton && (
                                 <span className="block mt-4 text-sm font-semibold opacity-80" style={{ color: pur.color }}>
-                                    {showGallery ? "Click to hide gallery ↑" : "Click to view gallery ↓"}
+                                    {activeGallery === pur.type ? "Click to hide gallery ↑" : "Click to view gallery ↓"}
                                 </span>
                             )}
                         </p>
@@ -69,9 +77,10 @@ const CreativePursuits: React.FC = () => {
                 ))}
             </div>
 
-            <AnimatePresence>
-                {showGallery && (
+            <AnimatePresence mode="wait">
+                {activeGallery && (
                     <motion.div 
+                        key={activeGallery}
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -79,12 +88,12 @@ const CreativePursuits: React.FC = () => {
                         className="mt-20 pb-8 text-center max-w-6xl mx-auto overflow-hidden"
                     >
                         <h3 className="text-3xl font-semibold mb-10 text-[var(--text-color)]">
-                            <span className="text-indigo-500">Photography</span> Collection
+                            <span className="text-indigo-500">{activeGallery}</span> Collection
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
-                            {[img1, img2, img3, img4].map((imgSrc, idx) => (
+                            {activeImages.map((imgSrc, idx) => (
                                 <motion.div
-                                    key={idx}
+                                    key={`${activeGallery}-${idx}`}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
@@ -94,14 +103,14 @@ const CreativePursuits: React.FC = () => {
                                 >
                                     <img
                                         src={imgSrc}
-                                        alt={`Photography ${idx + 1}`}
+                                        alt={`${activeGallery} ${idx + 1}`}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     {/* Hover Overlay */}
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                                         <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                                             <span className="text-white font-medium bg-black/60 px-5 py-2.5 rounded-full flex items-center gap-2 backdrop-blur-sm">
-                                                <FaCamera /> View Photo
+                                                {activeGallery === "Photography" ? <FaCamera /> : <FaPaintBrush />} View {activeGallery === "Photography" ? "Photo" : "Painting"}
                                             </span>
                                         </div>
                                     </div>
@@ -139,7 +148,7 @@ const CreativePursuits: React.FC = () => {
                         >
                             <img
                                 src={selectedImg}
-                                alt="Expanded photography view"
+                                alt="Expanded view"
                                 className="max-h-[90vh] max-w-full object-contain"
                             />
                         </motion.div>
